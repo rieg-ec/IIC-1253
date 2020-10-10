@@ -1,0 +1,159 @@
+% Plantilla para documentos LaTeX para enunciados
+% Por Pedro Pablo Aste Kompen - ppaste@uc.cl
+% Licencia Creative Commons BY-NC-SA 3.0
+% http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+\documentclass[12pt]{article}
+
+% Margen de 1 pulgada por lado
+\usepackage{fullpage}
+% Incluye gráficas
+\usepackage{graphicx}
+% Packages para matemáticas, por la American Mathematical Society
+\usepackage{amssymb}
+\usepackage{amsmath}
+% Desactivar hyphenation
+\usepackage[none]{hyphenat}
+% Saltar entre párrafos - sin sangrías
+\usepackage{parskip}
+% Español y UTF-8
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+% Links en el documento
+\usepackage[hidelinks]{hyperref}
+\usepackage[shortlabels]{enumitem}
+
+\usepackage{algorithmic}
+\usepackage[nothing]{algorithm}
+
+\newcommand{\bcap}{\ \hat{\cap} \ }
+\newcommand{\bcup}{\ \hat{\cup} \ }
+\newcommand{\bagP}{\hat{\mathcal{P}}}
+\newcommand{\la}{\leftarrow}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Exp}[1]{\mathcal{E}_{#1}}
+\newcommand{\List}[1]{\mathcal{L}_{#1}}
+\newcommand{\EN}{\Exp{\N}}
+\newcommand{\LN}{\List{\N}}
+\newcommand{\lrinline}{\text{\textbf{ --- }}}
+\newcommand{\lrmatrix}{\text{\textbf{---}}}
+
+\newcommand{\comment}[1]{}
+\newcommand{\lb}{\\~\\}
+\newcommand{\eop}{_{\square}}
+\newcommand{\hsig}{\hat{\sigma}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\lra}{\leftrightarrow}
+\newcommand{\com}{\textquotedbl}
+\newcommand{\htau}{\hat{\tau}}
+\newcommand{\twopartdef}[6]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 &  #2 \\
+			#3 &  #4 \\
+			#5 &  #6
+		\end{array}
+	\right.
+}
+
+\newcommand{\mtwopartdef}[8]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 &  #2 \\
+			#3 &  #4 \\
+			#5 &  #6 \\
+			#7 &  #8
+		\end{array}
+	\right.
+}
+
+% Comentar aligns
+\newcommand{\step}[1]{%
+  \text{\phantom{(#1)}} \tag{#1}
+}
+
+% use 'pauta' to print pauta
+\usepackage[pauta]{optional}
+
+\begin{document}
+\thispagestyle{empty}
+% Membrete
+% PUC-ING-DCC-IIC1103
+\begin{minipage}{2.3cm}
+\includegraphics[width=2cm]{logo.pdf}
+\vspace{0.5cm} % Altura de la corona del logo, así el texto queda alineado verticalmente con el círculo del logo.
+\end{minipage}
+\begin{minipage}{\linewidth}
+\textsc{\raggedright \footnotesize
+Pontificia Universidad Católica de Chile \\
+Departamento de Ciencia de la Computación \\
+IIC1253 - Matemáticas Discretas \\}
+\end{minipage}
+
+
+% Titulo
+\begin{center}
+\vspace{0.5cm}
+{\huge\bf Tarea 2}\\
+\vspace{0.2cm}
+\today \\
+\vspace{0.2cm}
+\footnotesize{2º semestre 2020 - Profesores G. Diéguez - F. Suárez}
+\vspace{0.2cm}
+\rule{\textwidth}{0.05mm}
+\end{center}
+
+% Cuerpo del documento ejemplo
+
+\section*{Requisitos}
+\begin{itemize}
+
+  \item La tarea es individual. Los casos de copia serán sancionados con la
+   reprobación del curso con nota $1.1$.
+
+  \item \textbf{Entrega}: Hasta las 23:59:59 del 14 de septiembre a través del buzón habilitado en el sitio del curso (Canvas).
+  Se habilitara un buzon distinto para cada pregunta para facilitar la correcion.
+
+  \begin{itemize}
+
+    \item Esta tarea debe ser hecha completamente en \LaTeX. Tareas hechas a mano o
+    en otro procesador de texto \textbf{no serán corregidas}.
+
+    \item Debe usar el template \LaTeX\ publicado en la página del curso.
+
+    \item Cada problema debe entregarse en un archivo independiente de las demas preguntas.
+    
+
+    \item Los archivos que debe entregar son un archivo \texttt{PDF} por cada pregunta
+    a su solución con nombre \texttt{numalumno-P1.pdf} y \texttt{numalumno-P2.pdf}, 
+    junto con un \texttt{zip} con nombre \texttt{numalumno-P1.zip} y \texttt{numalumno-P2.zip}, 
+    conteniendo el archivo \texttt{numalumno-P1.tex} y \texttt{numalumno-P2.tex},respectivamente, 
+    que compila su tarea. 
+    Si su código hace referencia a otros archivos, debe incluirlos también.
+
+
+  \end{itemize}
+
+  \item El no cumplimiento de alguna de las reglas se penalizará con un descuento de 0.5 en la nota final (acumulables).
+
+  \item No se aceptarán tareas atrasadas.
+
+  \item Si tiene alguna duda, el foro de Canvas es el lugar oficial para realizarla.
+\end{itemize}
+
+
+
+\section*{Problemas}
+
+    \subsection*{Problema 1 - Lógica proposicional}
+      \input{P1}
+    \newpage
+     \subsection*{Problema 2 - Lógica de predicados}
+      \input{P2}
+
+\end{document}

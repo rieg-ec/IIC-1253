@@ -1,0 +1,60 @@
+%!TEX root =./tarea2.tex
+
+\newcommand\myeq{\stackrel{\mathclap{\scriptsize\mbox{HI}}}{\equiv}}
+
+Dado $\alpha, \beta \in L(P)$, considere el siguiente conectivo binario:
+
+\[ \sigma(\alpha \sim \beta) = 
+\begin{cases}
+    1 & \text{ si $\sigma(\alpha) = 0$ y $\sigma(\beta)= 0$} \\
+    0 & \text{ en otro caso}
+\end{cases} 
+\]
+
+\begin{enumerate}[a)]
+  \item ¿Es $\sim$ conmutativo? Demuestre.
+  \item ¿Es $\sim$ asociativo? Demuestre.
+  \item ¿Es $\sim$ funcionalmente completo? Demuestre.
+\end{enumerate}
+
+\subsubsection*{Respuestas:}
+
+\begin{enumerate}[a)]
+    \item Para probar que $\sim$ es conmutativo compararemos las tablas de verdad de $\alpha \sim \beta$ y $\beta \sim \alpha$:
+    
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c}
+            & $\alpha$ & $\beta$ & $\alpha \sim \beta$ & $\beta \sim \alpha\\
+            \hline
+            $\sigma_1$: & $0$ & $0$ & $1$ & $1$ \\
+            $\sigma_2$: & $0$ & $1$ & $0$ & $0$ \\
+            $\sigma_3$: & $1$ & $0$ & $0$ & $0$ \\
+            $\sigma_4$: & $1$ & $1$ & $0$ & $0$ \\
+        \end{tabular}
+    \end{center}
+    
+    Como $\alpha \sim \beta \equiv \beta \sim \alpha$ el conectivo es conmutativo.
+    
+    \item Para probar que $\sim$ no es asociativo, basta encontrar un caso: tomemos $\alpha = 0$, $\beta = 0$ y $\gamma = 1$:
+    
+    \hspace{10mm} $\alpha \sim (\beta \sim \gamma) = 1$
+    
+    \hspace{10mm} $(\alpha \sim \beta) \sim \gamma = 0$
+    
+    Por lo que el conectivo no es asociativo.
+    
+    \item Se puede demostrar que el conectivo es funcionalmente completo si se encuentra una forma logicamente equivalente de escribir un conjunto funcionalmente completo ocupando solo el conectivo $\sim$. Sea el conjunto funcionalmente completo $C = \{\neg, \vee\}$, demostraremos que todo conectivo en $C$ puede ser escrito usando conectivos en $C' = \{\sim\}$ de forma inductiva:
+    
+    \textbf{BI}: Si $\varphi = p$ con $p \in P$, se cumple trivialmente.
+    
+    \textbf{HI}: Supongamos que $\varphi \equiv \varphi'$, $\psi \equiv \psi'$ con $\varphi, \psi$  $\in L(P)$ que ocupan solo conectivos en $C$, y $\varphi'$, $\psi'$ ocupan solo conectivos $C'$
+    
+    \textbf{TI}: Aplicaremos el paso inductivo para definir $\theta$ formula que ocupa solo conectivos en $C$ y escribiremos una formula logicamente equivalente con conectivos en $C'$:
+    
+    \begin{enumerate}[label=\roman*.]
+        \item $\theta = \neg \varphi \myeq \neg \varphi' \equiv \varphi' \sim \varphi'$
+        \item $\theta = \varphi \vee \psi \myeq \varphi' \vee \psi' \equiv (\varphi' \sim \psi') \sim (\varphi' \sim \psi')$
+    \end{enumerate}
+    
+    Por lo que queda demostrado que todo conectivo en $C'$ puede ser escrito ocupando solo conectivos en $C'$, y como $C$ es funcionalmente completo, $C'$ también lo es.
+\end{enumerate}

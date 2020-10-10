@@ -1,0 +1,52 @@
+%!TEX root =./tarea2.tex
+
+Considere las siguientes fórmulas:
+
+\begin{itemize}
+  \item $\varphi_1 = \forall x$ $R(x,x)$
+  \item $\varphi_2 = \forall x,y$ $R(x,y) \rightarrow R(y,x)$
+  \item $\varphi_3 = \forall x,y,z$ $(R(x,y) \wedge R(y,z)) \rightarrow R(x,z)$
+  \item $\varphi_4 = \forall x,y,z$ $(R(x,y) \wedge R(y,z)) \rightarrow R(z,x)$
+\end{itemize}
+
+Demuestre que para toda interpretación $\mathcal{I}$, se cumple que:
+
+  \[ \mathcal{I} \vDash \varphi_1 \wedge \varphi_2 \wedge \varphi_3 
+  \text{ si y solo si } \mathcal{I} \vDash \varphi_1 \wedge \varphi_4 \]
+
+\subsubsection*{Respuesta}
+
+Para demostrar la doble implicancia nos basta demostrar que $\varphi_1 \wedge \varphi_2 \wedge \varphi_3 \equiv \varphi_1 \wedge \varphi_4$.
+Para esto armaremos la tabla de verdad para $\sigma (varphi_1) = 1$, pues cuando $\sigma (varphi_1) = 0$ se cumple trivialmente:
+
+ \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c}
+         & $\varphi_1$ & $\varphi_2$ & $\varphi_3$ & $\varphi_4$ & $\varphi_1 \wedge \varphi_2 \wedge \varphi_3$ & $\varphi_1 \wedge \varphi_4$\\
+        \hline
+        $\sigma_1$: & $1$ & $0$ & $0$ & $0$ & $0$ & $0$ \\
+        $\sigma_2$: & $1$ & $0$ & $0$ & $1$ & $0$ & $1$ \\
+        $\sigma_3$: & $1$ & $0$ & $1$ & $0$ & $0$ & $0$ \\
+        $\sigma_4$: & $1$ & $1$ & $0$ & $0$ & $0$ & $0$ \\
+        $\sigma_5$: & $1$ & $1$ & $0$ & $1$ & $0$ & $1$ \\
+        $\sigma_6$: & $1$ & $1$ & $1$ & $0$ & $1$ & $0$ \\
+        $\sigma_7$: & $1$ & $0$ & $1$ & $1$ & $0$ & $1$ \\
+        $\sigma_8$: & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+    \end{tabular}
+\end{center}
+
+Lo que queda ahora es demostrar que los casos donde las valuaciones son distintas no se pueden dar. Estos son $(2)$, $(5)$, $(6)$ y $(7)$.
+
+\begin{enumerate*}
+    \item(2) y (7): Si $\sigma (\varphi_2) = 0$, eso quiere decir que hay al menos un caso donde la función $R$ no es conmutativa, es decir $R(x, y) \neq R(y, x)$, esto quiere decir que $\exists (x, y)$ tal que $R(y, x) = 0$ cuando $R(x, y) = 1$. Si nos fijamos en $\varphi_4$, y escogemos un valor de $(z, x) = (y, x)$ tal que como $R(x, y) = 0$, $R(z, x) = 0$ y $R(x, z) = 1$, nos queda la variable $y$ libre. Esto quiere decir que en algún momento $y = z$ por definicion del operador $\forall$. Entonces nos quedaría:
+    
+    \hspace{20mm} $R(x, z) \wedge R(z, z) \implies R(z, x)$
+    
+    Como tenemos que $\sigma (\varphi_1) = 1$ por lo que $R(z, z) = 1$, encontramos un caso donde $\varphi_4 = 1 \wedge 1 \implies 0$, por lo que $\varphi_4$ no puede ser 1 si $\sigma (varphi_1) = 1$ y $\sigma (\varphi_2) = 0$.
+    
+    \item(5) y (6): Si $\sigma (\varphi_1) = 1$ y $\sigma (\varphi_2) = 1$, se tiene que cumplir $R(x, y) = R(y, x)$ pues por contradicción si $\exists (x, y)$ tal que $R(x, y) \neq R(y, x)$, por definición del operador $\forall$ sucederá que $R(x, y) = 1$ y $R(y, x) = 0$ para algún $x, y$, lo cual no puede suceder pues $\sigma (\varphi_2) = 1$.
+    
+    Usando la propiedad de conmutatividad cuando $\sigma (\varphi_2) = 1$, sabemos que $R(x, z) = R(z, x)$, por lo que $\varphi_3$ y $\varphi_4$ son lógicamente equivalentes, por lo que no puede suceder que tengan valuaciones distintas.
+    
+    Así, hemos demostrado que $\varphi_1 \wedge \varphi_2 \wedge \varphi_3$ y $\varphi_1 \wedge \varphi_4$ tienen la misma tabla de verdad, por lo que son lógicamente equivalentes y la doble implicancia se cumple trivialmente.
+    
+\end{enumerate*}

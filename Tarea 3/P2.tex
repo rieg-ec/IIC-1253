@@ -1,0 +1,92 @@
+%!TEX root =./tarea2.tex
+
+\begin{enumerate}[a)]
+    \item Para demostrar que la relación es de equivalencia demostraremos que es refleja, simetrica y transitiva.
+    
+    \begin{enumerate}[1)]
+        \item $X \sim_n X \iff n + 1$ $|$ $x + nx$ lo cual es trivial ya que podemos escribir $x + nx$ como $x (n+1))$, y $n + 1$ siempre divide a $x (n+1)$
+
+        \item Para demostrar simetría debemos demostrar que $X \sim_n Y \implies Y \sim_n X$
+        \begin{align*}
+            (n+1)k &= x + ny \\
+                   &= x + (n+1)y - y\\
+            (n+1)(k-y) &= x - y\\
+        \end{align*}
+        ahora si nos fijamos en $Y \sim_n X$, tenemos que
+        
+        \begin{align*}
+            y + nx &= y + (n+1)x - x \\
+                   &= (n+1)x + (n+1)(y-k)\\
+                   &= (n+1)(x + y - k)\\
+        \end{align*}
+        
+        por lo que $(n+1)$ $|$ $x+ny$ $\implies$ $(n+1)$ $|$ $y + nx$ y la relación es simetrica.
+        
+        \item La relación es transitiva si $X \sim_n Y \land Y \sim_n Z \implies X \sim_n Z$.
+        
+        Para demostrar que la relación es transitiva haremos algo similar.
+        
+        Sabemos que $n+1$ $|$ $x + ny$ y que $n+1$ $|$ $y + nz$. Factorizando de igual manera que en la demostración anterior:
+        
+        \hspace{10mm} $(n+1)(k - y) = x - y$ y $(n+1)(c - z) = y - z$
+        
+        Si tenemos la ecuación $x + nz$, podemos escribirla como $x + (n+1)z - z$, y reemplazando por las ecuaciones anteriores, nos queda finalmente 
+        $(n+1)(k - y) + y + (n+1)z - y + (n+1)(c - z)$, factorizando por $(n + 1)$, nos queda $(n+1)(k - y + c)$, entonces $x + nz$ es multiplo de $(n+1)$, por lo que se cumple la implicancia y la relación es de equivalencia.
+    \end{enumerate}
+    
+    
+    
+    \item Para probar equivalencia se debe demostrar que la relación es refleja, simetrica y transitiva.
+    
+    \begin{enumerate}[1)]
+        \item Para demostrar que es refleja, tenemos que 
+        \begin{align*}
+            X \sim X \iff (X \cup X - X \cap X) \subseteq S
+        \end{align*}
+        
+        lo cual solo lo satisface el conjunto vacío. Por definición,
+        \begin{align*}
+            \emptyset \subseteq S
+        \end{align*}
+        
+        \item Para demostrar que es simetrica, tenemos que 
+        \begin{align*}
+            X \sim Y \iff (X \cup Y - X \cap Y) \subseteq S
+        \end{align*}
+        
+        pero por asociatividad de los operadores $\cap$ y $\cup$, también tenemos que
+        \begin{align*}
+            X \sim Y \iff (Y \cup X - Y \cap X) \subseteq S
+        \end{align*}
+        o sea,
+        \begin{align*}
+            Y \sim X \iff (Y \cup X - Y \cap X) \subseteq S
+        \end{align*}
+    
+        \item Para demostrar transitividad, se debe probar que para $X$, $Y$, $Z$ cualquieras,
+        
+        \begin{align*}
+            X \sim Y \land Y \sim Z \implies X \sim Z
+        \end{align*}
+        se cumple.
+        
+        en el lado izquierdo tenemos que para un $x$ cualquiera en  $\mathcal{U}$, se que cumple que
+        
+        $(x \in X \land x \notin Y \lor x \notin X \land x \in Y) \lor (x \in Y \land x \notin Z \lor x \notin Y \land x \in Z)$
+        
+        para que $X \sim Y \land X \sim Z$ sea cierto (excluimos el caso $x \in X \land x \in Z$ pues no nos sirve).
+        
+        tenemos que demostrar que lo de la derecha es verdadero.
+        
+        Para el mismo $x$, si $x \in X \land x \notin Z$ podemos ver que si $x \in Y$, se cumple pues $x \in Y \land x \notin Z$, por lo que $1 \implies 1$, y si $x \in Y$ también se cumple pues $x \in Y \land x \notin Z$, por lo que de nuevo $1 \implies 1$.
+        
+        Para el caso $x \notin X \land x \in Z$, podemos ver que si $x \in Y$ se cumple, ya que $x \notin X \land x \in Y$, y similarmente si $x \notin Y$, entonces $x \notin Y \land x \in Z$.
+
+        Para todos los casos donde se cumple el lado izquierdo, el lado derecho también se cumple. Por lo que podemos decir que el lado izquierdo implica el derecho. 
+        
+        El único caso donde no se cumple es para algun $x$ que pertenezca a $X$ y a $Z$, pero ese caso no nos sirve pues por definición del operador $\sim$ no puede ocurrir.
+        
+        \end{enumerate}
+        
+\end{enumerate}
+

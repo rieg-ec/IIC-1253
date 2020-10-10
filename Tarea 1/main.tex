@@ -1,0 +1,220 @@
+% Plantilla para documentos LaTeX para enunciados
+% Por Pedro Pablo Aste Kompen - ppaste@uc.cl
+% Licencia Creative Commons BY-NC-SA 3.0
+% http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+\documentclass[12pt]{article}
+
+% Margen de 1 pulgada por lado
+\usepackage{fullpage}
+% Incluye gráficas
+\usepackage{graphicx}
+% Packages para matemáticas, por la American Mathematical Society
+\usepackage{amssymb}
+\usepackage{amsmath}
+% Desactivar hyphenation
+\usepackage[none]{hyphenat}
+% Saltar entre párrafos - sin sangrías
+\usepackage{parskip}
+% Español y UTF-8
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+% Links en el documento
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\setlength{\headsep}{5pt}
+\pagestyle{fancy}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Exp}[1]{\mathcal{E}_{#1}}
+\newcommand{\List}[1]{\mathcal{L}_{#1}}
+\newcommand{\EN}{\Exp{\N}}
+\newcommand{\LN}{\List{\N}}
+
+\newcommand{\comment}[1]{}
+\newcommand{\lb}{\\~\\}
+\newcommand{\eop}{_{\square}}
+\newcommand{\hsig}{\hat{\sigma}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\lra}{\leftrightarrow}
+
+\newcommand\myeq{\stackrel{\mathclap{\smallfont\mbox{HI}}}{=}}
+
+% Cambiar por nombre completo + número de alumno
+\newcommand{\alumno}{Ramón Echeverría - 19638485}
+\rhead{Tarea 1 - \alumno}
+
+\begin{document}
+\thispagestyle{empty}
+% Membrete
+% PUC-ING-DCC-IIC1103
+\begin{minipage}{2.3cm}
+\includegraphics[width=2cm]{logo.pdf}
+\vspace{0.5cm} % Altura de la corona del logo, así el texto queda alineado verticalmente con el círculo del logo.
+\end{minipage}
+\begin{minipage}{\linewidth}
+\textsc{\raggedright \footnotesize
+Pontificia Universidad Católica de Chile \\
+Departamento de Ciencia de la Computación \\
+IIC1253 - Matemáticas Discretas \\}
+\end{minipage}
+
+
+% Titulo
+\begin{center}
+\vspace{0.5cm}
+{\huge\bf Tarea 1}\\
+\vspace{0.2cm}
+\today\\
+\vspace{0.2cm}
+\footnotesize{2º semestre 2020 - Profesores G. Diéguez - F. Suárez}\\
+\vspace{0.2cm}
+\footnotesize{\alumno}
+\rule{\textwidth}{0.05mm}
+\end{center}
+
+
+
+\section*{Respuestas}
+% Estas numeracion es solo de ejemplo
+
+\subsection*{Problema 1.a}
+
+
+Demostraremos por inducción simple que $b_n = 3 \cdot 2^n \cdot n!$:
+
+\vspace{5mm}
+
+\textbf{BI}: nuestro caso base es $n = 0$:
+
+\begin{equation*}
+    \begin{aligned}
+        3 \cdot 2^0 \cdot 0! = 3 = b_0
+    \end{aligned}
+\end{equation*}
+
+
+\textbf{HI}: supongamos que $\forall n \in \N$ se cumple que $b_n = 3 \cdot 2^n \cdot n!$.
+
+\textbf{TI}: demostraremos que lo anterior también se cumple para $n + 1$ $\in \N$:
+
+\begin{equation*}
+    \begin{aligned}
+        b_{n+1} &= 2 \cdot (n + 1) \cdot b_n \\
+                &= 2 \cdot (n + 1) \cdot 3 \cdot 2^n \cdot n! \\
+                &= 3 \cdot 2^{n+1} \cdot (n + 1)!
+    \end{aligned}
+\end{equation*}
+
+así, queda demostrado que se cumple para todo n $\in$ $\N$.
+
+
+\newpage
+
+\subsection*{Problema 1.b}
+
+Demostraremos que todo $x$ $\in P$ tiene factorizacion p-prima ocupando inducción fuerte:
+
+\textbf{BI}: el primer elemento del conjunto $P$ es el 2, el cual por ser p-primo tiene factorización p-prima.
+
+\textbf{HI}: supongamos que $\forall$ $k < x$, $k$ $\in P$, se cumple que $k$ tiene factorización p-prima. Demostraremos que $x$ $\in P$ también tiene factorización p-prima: 
+
+$x$ puede ser escrito como $2 \cdot a$ con $a \geq 2$
+
+así, para a: 
+
+(1) si  $a \notin P$, $x$ es p-primo por lo tanto posee factorización p-prima. 
+
+(2) si $a \in P$, por nuestra HI sabemos que $a$ posee factorización p-prima. Así, x posee factorización p-prima también.
+
+\newpage
+
+\subsection*{Problema 2.a}
+
+Para definir la función $size$ con inducción estructural, partiremos por el caso base:
+
+\begin{itemize}
+    \item Sea un conjunto A, para $x$ $\in A$, definimos $size(x) = 1$
+    
+    Sea el mismo conjunto A, con $x$ $\in A$ y sea $R_A$ remolino: 
+    
+    \item $size(R - x) = size(R) + 1$
+    \item $size (x - R) = size(R) + 1$
+    \item 
+           $size\left(\begin{matrix}
+           R\\
+           |\\
+           x
+         \end{matrix}\right) = size(R) + 1$
+    \item 
+           $size\left(\begin{matrix}
+           x\\
+           |\\
+           R
+         \end{matrix}\right) = size(R) + 1$
+\end{itemize}
+
+\newpage
+
+\subsection*{Problema 2.b}
+
+Para la demostración primero definiremos la función originCount(R), la que nos retornará el numero de origenes de un A-remolino. 
+
+Sea $A$ un conjunto cualquiera, $x \in A$ y $R_A$ remolino:
+\begin{itemize}
+    \item $originCount(x) = 1$
+    \item $originCount(R - x) = originCount(R) + 1$
+    \item 
+           $originCount\left(\begin{matrix}
+           R\\
+           |\\
+           x
+         \end{matrix}\right) = originCount(R) + 1$
+    \item 
+           $originCount\left(\begin{matrix}
+           x\\
+           |\\
+           R
+         \end{matrix}\right) = originCount(R) + 1$
+\end{itemize}
+
+Ahora haremos la demostración ocupando inducción simple.
+
+Sea $A$ un conjunto cualquiera, $x \in A$ y $R_A$ remolino:
+
+\textbf{BI}: $size(x) = 1 = originCount(x)$.
+
+\textbf{HI}: supondremos que se cumple para $R$, es decir, $size(R) = originCount(R)$
+
+\textbf{TI}:
+    \begin{itemize}
+        \item $size(R - x) = size(R) + 1 \myeq originCount(R) + 1 = originCount(R - x)$
+        \item $size(x - R) = size(R) + 1 \myeq originCount(R) + 1 = originCount(x - R)$
+        \item 
+           $size\left(\begin{matrix}
+           x\\
+           |\\
+           R
+         \end{matrix}\right) = size(R) + 1 \myeq originCount(R) + 1 = originCount\left(\begin{matrix}
+           x\\
+           |\\
+           R
+         \end{matrix}\right)$
+         
+         \item 
+           $size\left(\begin{matrix}
+           R\\
+           |\\
+           x
+         \end{matrix}\right) = size(R) + 1 \myeq originCount(R) + 1 = originCount\left(\begin{matrix}
+           R\\
+           |\\
+           x
+         \end{matrix}\right)$
+    \end{itemize}
+    
+    Queda demostrado que $size(R) = originCount(R)$, por lo tanto el número de origenes es igual a la función $size(R)$.
+
+% Fin del documento
+\end{document}

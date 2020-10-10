@@ -1,0 +1,73 @@
+%!TEX root =./tarea2.tex
+
+\newcommand\myeq{\stackrel{\mathclap{\scriptsize\mbox{HI}}}{\equiv}}
+
+\begin{enumerate}[a)]
+    
+    \item Ocupando la definición de suma vista en clases:
+    
+    \hspace{10mm} 1. $sum(m, 0) = m$
+    
+    \hspace{10mm} 2. $sum(m, \sigma(n)) =\sigma(sum(m, n))$
+    
+    Es trivial concluir que el 0 es elemento neutro.
+    
+    \vspace{5mm}
+    
+    \item Ocupando la definición de multiplicación:
+    
+    \hspace{10mm} 1. $mult(m, 0) = 0$
+    
+    \hspace{10mm} 2. $mult(m, \sigma(n)) =sum(m, mult(m, n))$
+    
+    notemos que 
+    \begin{align*}
+        \hspace{-20mm} mult(m, 1) &= mult(m, \sigma(0)) \\
+                   &= sum(m, mult(m, 0)) \\
+                   &= sum(m, 0) = m
+    \end{align*}
+    
+    Por lo que $1$ es elemento neutro de la multiplicación
+    
+    
+    \item Queremos demostrar que 
+
+    \hspace{20mm} $mult(a, sum(m, n)) = sum(mult(a, m), mult(a, n))$
+    
+    para cualquier $a, m, n$.
+    
+    Por inducción estructural:
+    
+    \textbf{BI}: Para $n = 0$ tenemos que
+    \begin{align*}
+        mult(a, sum(m, 0)) &= mult(a, m) \\
+                           &= sum(mult(a, m), 0))\\
+                           &= sum(mult(a, m), mult(a, 0))
+    \end{align*}
+    
+    por lo que el caso base se cumple.
+    
+    \newpage
+    
+    \textbf{HI}: Supongamos que se cumple que 
+    \begin{align*}
+        mult(a, sum(m, n)) = sum(mult(a, m), mult(a, n))
+    \end{align*}
+    
+    \textbf{TI}: demostrar que tambien se cumple que
+    \begin{align*}
+        mult(a, sum(m, \sigma(n))) &= sum(mult(a, m), mult(a, \sigma(n)) \\
+                                   &= sum(mult(a, m), sum(a, mult(a, n)))
+    \end{align*}
+    
+    Partiremos por el lado izquierdo:
+    
+    \begin{align*}
+        mult(a, sum(m, \sigma(n))) &= mult(a, \sigma(sum(m, n))) \\
+                                   &= sum(a, mult(a, sum(m, n))) \\
+                                   &\myeq sum(a, sum(mult(a, m), mult(a, n))) \\
+                                   &= sum(mult(a, m), sum(a, mult(a, n))) \text{ por asociatividad} \\
+    \end{align*}
+    
+    con lo que se demuestra la tesis de inducción, y la suma es distributiva con la multiplicación.
+\end{enumerate}

@@ -1,0 +1,146 @@
+%!TEX root =./tarea1.tex
+Dado un conjunto $A$, definimos el conjunto de los $A$-remolinos $\mathcal{R}_A$
+como el menor conjunto que cumple las siguientes reglas:
+
+\begin{enumerate}
+    \item $\forall x \in A, x \in \mathcal{R}_A$
+
+    \item $\forall x, y \in A$
+
+    \begin{itemize}
+        \item $ x \lrinline y \in \mathcal{R}_A$, $ y \lrinline x \in \mathcal{R}_A$
+
+        \item
+           $\begin{matrix}
+           x \\
+           | & \in \mathcal{R}_A\\
+           y \\
+         \end{matrix}$,
+         $\begin{matrix}
+         y \\
+         | & \in \mathcal{R}_A\\
+         x \\
+       \end{matrix}$
+    \end{itemize}
+
+    Para las siguientes reglas considere que $R \in \mathcal{R}_A$ y que $x,y \in A$.
+    \item Sea un $A$-remolino de la forma $R \lrinline x$. Todos los siguientes son $A$-remolinos:
+
+        $$R \lrinline x \lrinline y
+        \hspace{15mm}
+        \begin{matrix}
+           R & \lrmatrix & x \\
+             &   & |\\
+             &   & y
+         \end{matrix}
+         \hspace{15mm}
+         \begin{matrix}
+             &   & y \\
+             &   & |\\
+           R & \lrmatrix & x
+         \end{matrix}$$
+    \item Sea un $A$-remolino de la forma $x \lrinline R$. Todos los siguientes son $A$-remolinos:
+      $$y \lrinline x \lrinline R
+        \hspace{15mm}
+        \begin{matrix}
+          x & \lrmatrix & R \\
+          | &   &\\
+          y &   &
+        \end{matrix}
+        \hspace{15mm}
+        \begin{matrix}
+          y  &   &\\
+          |  &   &\\
+          x & \lrmatrix & R
+         \end{matrix}$$
+    \item Sea un $A$-remolino de la forma $\begin{matrix}R \\ | \\ x \end{matrix}$.
+    Todos los siguientes son $A$-remolinos:
+      $$\begin{matrix}
+        R\\
+        |\\
+        x\\
+        |\\
+        y
+      \end{matrix}
+        \hspace{15mm}
+        \begin{matrix}
+          R  &   &\\
+          |  &   &\\
+          x & \lrmatrix & y
+         \end{matrix}
+        \hspace{15mm}
+        \begin{matrix}
+            &   & R \\
+            &   & |\\
+          y & \lrmatrix & x
+        \end{matrix}$$
+    \item Sea un $A$-remolino de la forma $\begin{matrix}x \\ | \\ R \end{matrix}$.
+    Todos los siguientes son $A$-remolinos:
+      $$\begin{matrix}
+        y\\
+        |\\
+        x\\
+        |\\
+        R
+      \end{matrix}
+        \hspace{15mm}
+        \begin{matrix}
+          x & \lrmatrix & y \\
+          | &   &\\
+          R &   &
+        \end{matrix}
+        \hspace{15mm}
+        \begin{matrix}
+           y & \lrmatrix & x \\
+             &   & |\\
+             &   & R
+         \end{matrix}$$
+\end{enumerate}
+A modo de ejemplo, el siguiente es un $\N$-remolino:
+$$ R \quad = \quad
+  \begin{matrix}
+    &           & 3  & \lrmatrix & 2 &           & 4 &           & 100\\
+    &           & |  &           &   &           & | &           & |\\
+  8 & \lrmatrix & 3  &           &   &           & 0 & \lrmatrix & 3\\
+    &           & |  &           &   &           & | &           &\\
+    &           & 27 & \lrmatrix & 1 & \lrmatrix & 1 &           &\\
+    &           & |  &           & | &           &   &           &\\
+    &           & 4  &           & 5 &           &   &           &
+  \end{matrix}
+$$
+\begin{enumerate}
+  \item[a)] Defina la función $size: \mathcal{R}_A \rightarrow \N$, la que
+  recibe un $A$-remolino y retorna el número de elementos de $A$ que contiene.
+  En el caso del ejemplo anterior, $size(R) = 13$.
+  \item[b)] Considere la siguiente definición inductiva para el \textit{origen}
+  de un $A$-remolino:
+
+  $origin: \mathcal{R}_A \rightarrow A$
+  \begin{enumerate}
+    \item[1.] $\forall x \in A, origin(x) = x$
+    \item[2.] $\forall x, y \in A$
+    \begin{itemize}
+        \item $ origin(x \lrinline y) = x$, $origin(y \lrinline x) = x$
+
+        \item
+           $origin\left(\begin{matrix}
+           x\\
+           |\\
+           y
+         \end{matrix}\right) = x$,
+         $origin\left(\begin{matrix}
+         y\\
+         |\\
+         x
+       \end{matrix}\right) = x$
+    \end{itemize}
+    Para las siguientes reglas considere que $R \in \mathcal{R}_A$ y que $x \in A$.
+    \item[3.] $origin(R \lrinline x) = origin(R)$.
+    \item[4.] $origin(x \lrinline R) = origin(R)$.
+    \item[5.] $origin\left(\begin{matrix}R \\ | \\ x \end{matrix}\right) = origin(R)$.
+    \item[6.] $origin\left(\begin{matrix}x \\ | \\ R \end{matrix}\right) = origin(R)$.
+  \end{enumerate}
+  Note que con esta definición, un $A$-remolino puede tener múltiples orígenes.
+
+  Demuestre que el número de orígenes de un $A$-remolino $R$ es igual a $size(R)$.
+\end{enumerate}
