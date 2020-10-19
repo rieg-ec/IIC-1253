@@ -1,0 +1,12 @@
+%!TEX root =./tarea4.tex
+
+Para demostrar que la relación $R$ es de orden parcial, debemos demostrar que es una relación refleja, no simétrica y transitiva.
+
+\begin{enumerate}[a)]
+    \item Si tomamos el conjunto de pares ordenados $(a_i,...,a_n)$, tenemos que $(a_1,...,a_n)R(a_1,...,a_n)$ se cumple si y solo si se cumple $a_iR_ib_i$ $\forall \in 1,...,n $ por como está definida la relación. Como sabemos que $Ri$ es de orden parcial, entonces lo segundo se cumple, por lo tanto $R$ es una relación refleja.
+    
+    \item Tomando los conjuntos de pares ordenados $(a_1,...,a_n)$ y $(b_1,...,b_n)$, tenemos que \newline $(a_1,...,a_n) R (b_1,...,b_n) \not\equiv (b_1,...,b_n) R (a_1,...,a_n)$ se cumple si y solo si $a_i R_i b_i \not\equiv b_i R_i a_i$ se cumple, por definición de R. Como sabemos que $R_i$ es una relación de orden parcial, es antisimétrica, por lo que $a_i R_i b_i$ no es simétrica con $b_i R_i a_i$, por lo que $R$ es entonces antisimétrica también.
+     
+    \item Si tomamos $(a_1,...,a_n)$, $(b_1,...,b_n)$, $(c_1,...,c_n)$, para que $R$ sea transitiva se tiene que cumplir que $(a_1,...,a_n) R (b_1,...,b_n) \land (b_1,...,b_n) R (c_1,...,c_n) \implies (a_1,...,a_n) R (b_1,...,b_n)$. Como sabemos que $R_i$ es de orden parcial, es transitiva, por lo que $a_i R_i b_i \land b_i R_i c_i \implies a_i R_i c_i$ se cumple, por lo tanto $(a_1,...,a_n) R (b_1,...,b_n) \land (b_1,...,b_n) R (c_1,...,c_n) \implies (a_1,...,a_n) R (b_1,...,b_n)$ también se cumple. De esa manera $R$ es transitiva, refleja y antisimétrica, por lo tanto es de orden parcial.
+\end{enumerate}
+
