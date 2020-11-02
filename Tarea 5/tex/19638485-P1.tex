@@ -1,0 +1,30 @@
+\begin{algorithm}
+    \caption{Encontrar el MCM entre i y j $\in$ $N$, con j $\geq$ i}
+    \begin{algorithmic}
+        \STATE {w = j}
+        \WHILE{mod($w$, i) $\neq$ 0} 
+            \STATE {$w = w + j$}
+        \ENDWHILE
+        \RETURN {$w$}
+    \end{algorithmic}
+\end{algorithm}
+    
+        
+Para demostrar que el algoritmo es correcto debemos demostrar que (1) este termina, y (2) si termina, es correcto. 
+
+\begin{enumerate}
+    \item Para demostrar que el algoritmo se termina, tomemos $x$ como la cantidad de veces que se ha ejecutado el loop. Basta con fijarse en que $x$ nuncá será mayor a $i$, puesto que si $w = j*i$, $mod(w, i) = 0$ y el algoritmo se terminaría. Hemos encontrado una cota superior para $x$, y como este es creciente entonces sabemos que en algún momento el algoritmo termina. Podemos escoger como invariante $w =  j*x$ con $x$ la cantidad de veces que se ejecute el loop. 
+    
+    Demostración:
+    \begin{itemize}[label={}]
+      \item \textbf{B.I.}: si $x = 1$, $w = j = 1 j$.
+      \item \textbf{H.I.}: Supongamos que para $x_n$ cualquiera, $w = j * x_n$.
+      \item \textbf{T.I}: luego de la iteración $x_n$, tenemos que $w_n = j * x_n$. La siguiente iteración, $w_{n+1} = w_n + j = j*x_n + j = x_{n+1} * j$. 
+    \end{itemize}
+    
+    Y de esta forma nuestro invariante se mantiene independiente del número de iteraciones.
+    
+    \item Para demostrar que cuando acaba, este es correcto, debemos demostrar que nuestro invariante es el mínimo común multiplo entre $i$ y $j$. Por contradicción, supongamos que este NO es el MCM entre estos dos números. Esto significa que $\exists k$, t.q. $k < w$ y $k$ es el MCM entre $i$ y $j$. En ese caso, la condición del $while$ no se cumpliría, pues $mod(k, i) = 0$ puesto que $k$ es divisible por $i$ y el algoritmo se habría acabado retornando $w = k$. De esta forma, el invariante es siempre el menor número divisible por $i$ y $j$.
+\end{enumerate}
+
+Para calcular la complejidad del algoritmo, nos basaremos en $i$, es decir el menor número que recibe. Es facil ver que en el mejor caso, $mod (j, i) = 0$, por lo tanto $mod (j * 1, i ) = mod(w, i) = 0$ y el algoritmo solamente toma 3 pasos independiende del tamaño de los inputs. Así, en el mejor de los casos nuestro algoritmo es $O(1)$. En el peor de los casos, nos tomará $i$ repeticiones del loop llegar al MCM. De esa forma nuestro algoritmo es $O(i)$ en el peor de los casos. Si ocupamos el numero de digitos de $i$, una buena aproximación sería $d = log_{10} i$ con $d$ número de digitos. si escribimos $i$ en términos del tamaño de digitos, $i \approx 10^d$, por lo que nuestro algoritmo es $O(10^d)$ en el peor de los casos, es decir se comporta de manera exponencial con respecto al número de digitos de $i$.

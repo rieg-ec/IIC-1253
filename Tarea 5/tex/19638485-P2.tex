@@ -1,0 +1,52 @@
+\begin{enumerate}
+    \item Para demostrar que esta afirmación es falsa, podemos demostrar que
+    
+    \begin{align}
+        cn\sqrt{n} < \sqrt{n!}
+    \end{align}
+    
+    a partir de cierto $n$ y para una constante arbitraria. Si reescribimos la expresión anterior, nos queda 
+    
+    \begin{align}
+        cn < \sqrt{(n-1)!}
+    \end{align}
+    
+    Notemos que la siguiente propiedad se cumple para $n$ a partir de $8$:
+    
+    \begin{align}
+        (n-1)! > n^4
+    \end{align}
+    
+    y también que $\forall n > c$ con $n \in \mathds{N}_+$
+    
+    \begin{align}
+        n^2 = \sqrt{n^4} > cn 
+    \end{align}
+    
+    por lo tanto, 
+    
+    \begin{align}
+        \sqrt{(n-1)!} > cn
+    \end{align}
+    
+    a partir de $n = 8$ y para cualquier c (con c = 1 nos basta para la demostración). Por lo tanto, 
+    
+    \begin{align}
+        \sqrt{n!} \notin O(n\sqrt{n})
+    \end{align}
+    
+    \item De manera trivial sabemos que 
+    
+    \begin{align}
+        \sqrt{n} < \frac{n}{2} \hspace{4mm} \forall n \in \mathds{N} \land n > 4
+    \end{align}
+    
+    por lo tanto,
+    
+    \begin{align}
+        n^{\sqrt{n}} &< n^{\frac{n}{2}} \hspace{4mm} \forall n \in \mathds{N} \land n > 4 \\
+        n^{\sqrt{n}} &< cn^{\frac{n}{2}} \hspace{2mm} \forall n \in \mathds{N} \land n > 4 \land c \geq 1
+    \end{align}
+    
+    queda demostrado que la propiedad se cumple.
+\end{enumerate}
